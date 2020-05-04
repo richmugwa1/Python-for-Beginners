@@ -134,5 +134,136 @@ Python uses a built in module* called random to make random numbers. """
 import random # If it is a module, you have to import it.
 print(random.randrange(1,10))
 
+"""Casting in python is a way to specify a dataype even if the value was assigned a different data type, we use these constructors int(), float() and str() to do casting in python """
+#Example
+x = int(1)      #constructs an integer from an integer literal
+x = int(2.9)    #constructs an integer from a  float   literal * rounds down to the previous whole number
+x = int("5")    #constructs an integer from a  string  literal * the string must contain a whole number
+
+x = float(1)    #constructs a float from an integer 
+x = float(5.8)  #constructs a float from a float 
+x = float("5")  #constructs a float from a string 
+x = float("5.9")#constructs a float from a string representing a float number
+
+x = str(1)     # You can contruct a string from any other data type
+x = str(1.5)   # You can contruct a string from any other data type
+x = str("Hi")  # You can contruct a string from any other data type 
 
 
+#THE TEXT TYPE AKA  STRING
+
+""" The sytax is simple. A string is srrounded by either single quotes or double quotes  """
+
+x = "Jon" # is the same as 
+x = 'John'
+print(x)
+
+"""You can assign a multiline string to a variable using three double quotes or three single quotes"""
+
+x = """Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.""" # is the same as 
+
+x = '''Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.'''
+
+print(x) # The line breaks at the same position as in the code.
+
+
+""" Accessing a unique character in a string. Remember that Strings are arrays of bytes representing unicode characters. The beauty of Python is that a single character is itself a string with lenght of 1, it makes it easier to access, use square brackets [] to access any element of a string """
+
+a = "Hello World"
+print(a[1]) # It gets the element at position(or index) 1. * python starts at index 0
+
+"""Slicing: You can access elements from an index to another. 
+Use a colon to get characters from index 2 to index 5(not included)"""
+
+print(a[2:5]) # You get elements until the comma(index 5). * note the coma is not included
+
+"""You can also start indexing from the end of the string by using negative indexes"""
+
+print (a[-5:-2]) # [-5] is the space, [-2] is l but not included. you get Wor.
+
+"""The len() function returns the lenght is a string"""
+
+print(len(a))
+
+"""String Methods(Methods are different from fuctions because they are used by the variables ( variable.method) while functions use the variables(function(variable)). )"""
+
+#strip() method. will remove any white spaces from the begining and the end of a string
+
+a = "  I love you MOM   "
+print(a)
+print(a.strip())
+
+#lower() method. will return the string in lower case
+
+print(a.lower())
+
+#upper() method. you guessed it right. 
+
+print(a.upper())
+
+#replace() method. will replace specified elements in a string with another string of new elements 
+
+print(a.replace("I","Me")) # It takes two arguements, the old string, the new string
+
+#split() method. will split the string into substrings at every instance of a separator
+a = a.strip() #this removes spaes at the begining and the end.
+print(a.split(" ")) # This will separate the strings evertime it sees the "space separator"
+
+"""There are about 40 string methods that you can search on the internet and familiarize yourself with"""
+
+"""Check strings. You can check if a cetrain phrase of character is in the string. 
+use the keyword "in " or "not in" to do that. """
+
+txt = "I love you mom"
+x = "love" in txt
+print(x) # it will return a boolean True because it checks if the phrase 'love' is in the value of 'txt' which is true
+
+y = "love" not in txt
+print(y) # It will return the boolean False ebecause it checks if 'love' is not in the value of 'txt' with is False
+
+"""String concatenation, to combine two or more strings just use the '+' operator"""
+word1 = "I"
+word2 = "love"
+word3 = "you"
+word4 = "mom"
+
+combined = word1 + word2 + word3 + word4 
+print(combined)
+
+"""To add space between them, use '+ " "' """
+combined = word1  + " " + word2 + " " + word3 + " " + word4
+print( combined)
+
+""" To combine a string and a number in one print function, we use the format() method
+To do so, we specify where the number/or string should go and put a spaceholde {}. The format method argument will be the content for the spaceholder and it will be formated to work with the print function"""
+
+age = 18
+txt = "I am {} years old"
+print(txt.format(age))
+#the format() method can take an anulimited number of arguments and are delivered in respective placeholders.
+age = 30
+exp = 12
+Apps = 3
+rev = "MILLION"
+pres= """My name is Richard, I am {} years old, I have been in the industry
+for {} years and I have made {} successfull application 
+that are currently making {} dollars"""
+
+print(pres.format(age, exp, Apps, rev ))
+
+#If you use the index numbers, it will force the arguments into the desired placeholders.
+pres2= """My name is Richard, I am {1} years old, I have been in the industry
+for {3} years and I have made {3} successfull application 
+that are currently making {0} dollars"""
+print(pres2.format(age,exp,Apps,rev)) #See how the order has changed.
+
+"Escape characters in python are characters that save you from writing illegal characters as double quotes inside double quotes"
+#Example
+#print( "my name is Bond "james" Bond ") #This will give an error
+print("my name is Bond \"James\" Bond") #the '\' is an escape character, python can't read it
