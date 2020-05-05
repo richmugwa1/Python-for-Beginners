@@ -267,3 +267,74 @@ print(pres2.format(age,exp,Apps,rev)) #See how the order has changed.
 #Example
 #print( "my name is Bond "james" Bond ") #This will give an error
 print("my name is Bond \"James\" Bond") #the '\' is an escape character, python can't read it
+
+"""Here is a list of other Escape characters and what they do"""
+# \' will write a single quotaation mark
+# \" will write double quotation marks
+# \n will create a new line
+# \t will create a tab(4 spaces)
+# \r will act as if you hit return on your keyboard
+# \b will perform a backspace (delete the previous character)
+# \\ will write a single backslash
+
+
+# BOOLEANS AKA TRUE OR FALSE
+"""Yes, these data types have only two values: True when the result is there and 
+False when the result is not there"""
+
+#comparision. Everytime there is a >,<,==,<= or >=, the epression is evaluated and python reurns a boolean True ao False.
+
+print(10 > 9)
+print(10 < 0)
+print(10 == 0)
+
+#if statement. Everytime you run an if statement, the statement is evaluated and python returns a boolean True or False
+
+a = 200
+b = 33
+if b>a: # Python return True or false in the background
+    print("b is greater than a") #if the statement is true, this will be printed
+else:
+    print("b is not greater than a") # if the statement is not true, this will be printed
+    
+
+#Evaluation. Use bool()function to evaluate any value and you will get True or false in return.
+print(bool("Hello")) # will give True
+print(bool(15)) # will give True
+print(bool(0)) # will give false
+"""Most values are True.Actually anythin that has content other than 0 is True.
+The following will return false"""
+
+bool(False) # Of cause False is false
+bool(None) # None will always return False because it is a keword for empty, nothing
+bool(0) # Zero returns false
+bool("")# An empty string returns false
+bool(()) # An empty tuple returns false
+bool([]) # An empty list returns False
+bool({}) # AN epmpty set or dictionary returns false
+
+""" We will see classes later but SPOILER ALERT, but an object will evaluate to False
+if it is made from a class with a __len__ function that returns 0 or False"""
+# Example
+
+class myclass():
+    def __len__(self):
+        return 0
+    
+my_obj = myclass()
+print(bool(my_obj))
+
+# A Function can return a boolean
+def myFunction():
+    return True
+print (myFunction()) #worry not, we will see functions later
+
+if myFunction(): # You can execute code based on the boolean value you gave to a function
+    print("YES")
+else:
+    print("NO")
+
+#Python has more built-in functions that return a boolean value. isinstance() can be used to see if an object is of a certain data type.
+
+x = 200
+print(isinstance(x, float)) #It returns False because x is NOT a float
