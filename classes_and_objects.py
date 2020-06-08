@@ -62,14 +62,93 @@ print(p1.age)
 # DELETE OBJECT PROPERTIES
 """ use the 'del' keyword"""
 del p1.age
-print(p1.age) # You will see this error AttributeError: 'Person' object has no attribute 'age' because it is deleted
+#print(p1.age) # You will see this error AttributeError: 'Person' object has no attribute 'age' because it is deleted
 
 """ the 'del' keyword can also delete objects"""
 
 del p1
-print(p1.age)
+#print(p1.age)
 
 # PASS
 """ If for some reason you want to leave the class empty, use the  'pass' statement"""
 class myclass:
     pass
+
+# INHERITANCE
+
+""" python uses inheritance to define a class that inherits all the methods and properties 
+from another class """
+# parent class/ base class, the class being inherited from.
+# Child Class/ derivered class, the class that inherits.
+
+# CREATE A PARENT CLASS
+""" Just create any class"""
+class Person:                                # This is the class containing names of a person.
+    def __init__(self, fname, lname):        # Define the built-in self calling __init__ function
+        self.firstname = fname               # The class property 'firstname'
+        self.lastname = lname                # The class property 'lastname'
+    
+    def printname(self):                     # The class method 
+        print(self.firstname, self.lastname) # The only method here is to print
+x = Person("Jean", "Jack")                   # A new object created using the class.
+x.printname()                                # Executing the method using this new object
+
+# CREATE A CHILD CLASS
+""" send the parent class as a parameter"""
+class Student(Person):       # The Student class inherits properties and methods of the Person class
+    pass                     # Since we do not want to change the properties or methods of the parent
+
+y = Student("Bob", "Marley") # A new object created using the 'student" class, it takes the parent's properties
+y.printname()                # Executing the parent class method using the newly create object.    
+
+# ADD THE __init__() FUNCTION TO THE CHILD CLASS
+""" 
+from the moment we give a achild its __init__() function,
+it starts behaving independently of the parent and there is not inheritance
+ """
+
+class Student(Person): # If you remove the parent as argument, it will still work
+    def __init__(self, fname, mname, lname): # The child will have its own properties and methods
+        self.firstname = fname # Child's own properties
+        self.lastname = lname #Child's own property
+        self.middlename = mname #Child own property
+    def print_a_name(self): # Child's own method
+        print(self.firstname, self.middlename, self.lastname) #Child's own method 
+pres = Student("Barack", "Hussein", "Obama") # new object created using child class
+pres.print_a_name() #Executing the method using the newly created object.
+
+""" Keep the inheritance of the __init__() function of the parent. """
+class Student(Person):
+    def __init__(self, fname, lname):
+        Person.__init__(self, fname, lname) #This makes the child inherit the __init__() of the parent
+    
+    def print_b_(self):
+        print(self.firstname, self.lastname)
+
+z = Student("Johnny", "Deep")
+z.print_b_()
+
+
+# THE super() FUNCTION
+""" It is used to force a child Keep the inheritance 
+of both properties and methods of the parent"""
+
+class Student(Person):
+    def __init__(self, fname, lname):
+        super().__init__(fname, lname) # no need to say the name of the parent anymore
+w = Student("Alicia", "Keys")
+w.printname()
+
+# ADD A PROPERTY & A METHOD
+""" To get the child have its own properties and methods
+but also inherit from the parent's properties and methods
+you can add properties and you can add methods too"""
+class Student(Person):                       # Create a child class with the parent as argument.
+    def __init__(self, fname, lname, year):  # Add a new argument 'year' to the child's __init__
+        super().__init__(fname, lname)       # Force the child's inheritance from the parent
+        self.graduationyear = year           # Add new properties, unique to the child, that match the new arguments
+    def welcome(self):                       # Define a new method. Different name than the parent. Otherwise the child will override.
+        print("Welcome", self.firstname, self.lastname," to the class of ", self.graduationyear) # What the new method does.
+w = Student("Alrick", "Brown", 2008)         # Create a new object using the child class.
+w.welcome()                                  # Execute the new method using the newly created object. 
+
