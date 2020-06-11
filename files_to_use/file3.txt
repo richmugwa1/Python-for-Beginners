@@ -1,0 +1,2 @@
+The original text will be lost in this new text
+because of the write mode
