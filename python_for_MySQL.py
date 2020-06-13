@@ -1,4 +1,5 @@
 # MySQL
+
 """ Remember, you get input from users or from databases. 
 MySQL is a popular database and here is how to use Python in MySQL"""
 
