@@ -141,3 +141,67 @@ mycursor.execute(sql, adr)
 myresult = mycursor.fetchall()
 for x in myresult: # 
     print(x)
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "***********",
+    database = "testdb"
+) 
+my_cursor = mydb.cursor()
+#my_cursor.execute("CREATE DATABASE testdb")
+# my_cursor.execute("SHOW DATABASES")
+# for db in my_cursor:
+#     print(db[0])
+#my_cursor.execute("CREATE TABLE users (name VARCHAR(255), email VARCHAR(255), age INTEGER(10), user_id INTEGER AUTO_INCREMENT PRIMARY KEY )")
+# my_cursor.execute("SHOW TABLES")
+# for table in my_cursor:
+#     print(table[0])
+# newdata = "INSERT INTO users (name, email, age) VALUES (%s, %s, %s)"
+# record1 = ("John", "john@john.com", 40)
+# my_cursor.execute(newdata, record1)
+# mydb.commit()
+
+# sql = "INSERT INTO users (name, email, age) VALUES (%s, %s, %s)"
+# val = [
+#   ('Peter', 'example@example.com', 56),
+#   ('Amy', 'example@example.com', 74),
+#   ('Hannah', 'example@example.com', 34),
+#   ('Michael', 'example@example.com', 23),
+#   ('Sandy', 'example@example.com', 64),
+#   ('Betty', 'example@example.com', 43),
+#   ('Richard', 'example@example.com', 54),
+#   ('Susan', 'example@example.com', 23),
+#   ('Vicky', 'example@example.com', 89),
+#   ('Ben', 'example@example.com', 23),
+#   ('William', 'example@example.com', 34),
+#   ('Chuck', 'example@example.com', 34),
+#   ('Viola', 'example@example.com', 35)
+# ]
+# my_cursor.executemany(sql, val)
+# mydb.commit()
+
+
+
+# my_cursor.execute("SELECT * FROM users ORDER BY name DESC") #ORDERING IN REVERSE ALPHABET (default is ASC for )
+# for a in my_cursor:
+#     print(a)
+# delete_users = " DELETE FROM users WHERE name = %s " # DELETE records that have name of the placeholder
+# name_to_delete = ("Ben",) # The name has to be Ben
+# my_cursor.execute(delete_users, name_to_delete)
+# mydb.commit()
+
+#my_cursor.execute("CREATE TABLE table_to_delete (address VARCHAR(255), po VARCHAR(255), id INTEGER AUTO_INCREMENT PRIMARY KEY)")
+# data = "INSERT INTO table_to_delete (address, po) VALUES = %s,%s"
+# values = ("MTL St, 245", "735A")
+# mydb.commit()
+#my_cursor.execute("DROP TABLE table_to_delete") # THIS DELETES THE TABLE THAT WAS JUST CREATED
+#my_cursor.execute("DROP TABLE IF EXISTS table_to_delete") # DELETES THE TABLE ONLY IF IT EXIST TO AVOID THE ERROR
+
+# updating_records = "UPDATE users SET age = %s WHERE age = %s" # THIS UPDATES THE AGE RECORDS.
+# updated_records = (70, 34 ) # UPDATES ALL RECORDS WITH AGE 34 TO AGE 70
+# my_cursor.execute(updating_records, updated_records)
+# mydb.commit()
+# print(my_cursor.rowcount, "record(s) affected")
